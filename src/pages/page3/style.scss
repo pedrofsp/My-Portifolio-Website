@@ -1,0 +1,11 @@
+@import '../../sass/variables.scss';
+@import '../../sass/functions.scss';
+
+.all-page3 {
+  @include flexBox(row, center);
+  width: 100%;
+}
+
+.content {
+  width: $widthPagePorcentage;
+}

@@ -1,0 +1,23 @@
+@import '../../sass/variables.scss';
+@import '../../sass/functions.scss';
+
+.all-title-component {
+  margin-bottom: 20px;
+
+  h1 {
+    font-size: 35px;
+  }
+  .line {
+    background-color: $red;
+    width: 40px;
+    height: 3px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .all-title-component {
+    h1 {
+      font-size: 30px;
+    }
+  }
+}

@@ -1,0 +1,39 @@
+@import '../../sass/variables.scss';
+@import '../../sass/functions.scss';
+
+.all-services {
+  width: 100%;
+  @include flexBox(row, center);
+  .content {
+    width: $widthPagePorcentage;
+
+    .center-carousel {
+      @include flexBox(row, space-between);
+      flex-wrap: wrap;
+      width: 100%;
+      .center-card {
+        display: block;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .all-services {
+    width: 100%;
+    @include flexBox(row, center);
+    .content {
+      width: $widthPagePorcentage;
+
+      .center-carousel {
+        @include flexBox(row, space-between);
+        flex-wrap: wrap;
+        width: 100%;
+        .center-card {
+          @include flexBox(row, center);
+          margin: 12px 0;
+        }
+      }
+    }
+  }
+}

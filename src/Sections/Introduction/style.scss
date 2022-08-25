@@ -1,0 +1,110 @@
+@import '../../sass/variables.scss';
+@import '../../sass/functions.scss';
+
+.all-introduction {
+  background-color: $gray;
+  width: 100%;
+  @include flexBox(row, center);
+
+  .content {
+    font-family: MontserratSemiBold;
+    width: $widthPagePorcentage;
+
+    .flex-content {
+      position: relative;
+      @include flexBox(row, center);
+      width: 100%;
+      height: 100%;
+      align-items: center;
+
+      .left {
+        width: 50%;
+        padding-left: 20px;
+        .flex-button {
+          @include flexBox(row, start);
+          .flex-space {
+            @include horizontalSpace(20px);
+          }
+        }
+
+        h2 {
+          font-size: 70px;
+        }
+      }
+      .right {
+        @include flexBox(row, center);
+        width: 50%;
+
+        img {
+          height: 600px;
+          margin-top: 200px;
+        }
+      }
+    }
+  }
+}
+
+.elipse {
+  $elipseheight: 25px;
+  position: absolute;
+  width: 100vw;
+  height: $elipseheight;
+  bottom: -($elipseheight/2);
+  background-color: $white;
+  border-radius: 50%;
+}
+
+//tablet
+@media only screen and (max-width: 920px) {
+  .all-introduction {
+    .content {
+      margin-top: 180px;
+
+      .flex-content {
+        @include flexBox(column, space-between);
+
+        .left {
+          width: 100%;
+
+          h2 {
+            font-size: 50px;
+          }
+        }
+
+        .right {
+          img {
+            margin-top: 80px;
+          }
+        }
+      }
+    }
+  }
+}
+
+//mobile
+@media only screen and (max-width: 500px) {
+  .all-introduction {
+    .content {
+      margin-top: 120px;
+
+      .flex-content {
+        @include flexBox(column, space-between);
+
+        .left {
+          width: 100%;
+
+          h2 {
+            font-size: 40px;
+          }
+        }
+
+        .right {
+          img {
+            height: 300px;
+            margin-top: 30px;
+          }
+        }
+      }
+    }
+  }
+}

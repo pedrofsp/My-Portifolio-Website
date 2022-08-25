@@ -1,0 +1,27 @@
+@import '../../sass/variables.scss';
+@import '../../sass/functions.scss';
+
+.all-experencies {
+  width: 100%;
+  @include flexBox(collum, center);
+  .content {
+    width: $widthPagePorcentage;
+
+    .flex-space {
+      @include verticalSpace(15px);
+    }
+
+    .react-tabs__tab-list {
+      border: none;
+    }
+
+    .react-tabs__tab {
+      border: none;
+      border-bottom: 1px solid $gray;
+    }
+
+    .react-tabs__tab--selected {
+      border-bottom: 3px solid $red;
+    }
+  }
+}

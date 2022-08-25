@@ -1,0 +1,39 @@
+@import '../../sass/functions.scss';
+@import '../../sass/variables.scss';
+
+.button-component {
+  border: none;
+  min-width: 150px;
+  padding: 5px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+  font-family: MontserratBold;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.red {
+  background-color: $red;
+  color: $white;
+}
+
+.white {
+  background-color: $white;
+  color: $red;
+}
+
+.outline {
+  background-color: transparent;
+  border: 2px solid $black;
+  color: $black;
+}
+
+@media only screen and (max-width: 920px) {
+  .button-component {
+    font-size: 14px;
+  }
+}

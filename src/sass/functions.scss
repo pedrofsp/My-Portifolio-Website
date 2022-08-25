@@ -1,0 +1,21 @@
+@mixin flexBox($direction, $justify) {
+  display: flex;
+  justify-content: $justify;
+  flex-direction: $direction;
+  @if $direction == row {
+    width: 100%;
+  }
+  @if $direction == column {
+    height: 100%;
+  }
+}
+
+@mixin verticalSpace($height) {
+  width: 100%;
+  height: $height;
+}
+
+@mixin horizontalSpace($width) {
+  height: 100%;
+  width: $width;
+}
