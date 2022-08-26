@@ -12,15 +12,25 @@ export default function Home() {
     <div className="all-home">
       <Introduction />
       <div className="space"></div>
-      <About />
+      <div id="career">
+        <About />
+      </div>
       <div className="space"></div>
-      <Services />
+      <div id="services">
+        <Services />
+      </div>
       <div className="space"></div>
-      <Experiencies />
+      <div id="experiences">
+        <Experiencies />
+      </div>
       <div className="space"></div>
-      <CV />
+      <div id="cv">
+        <CV />
+      </div>
       <div className="space"></div>
-      <Contact />
+      <div id="contact">
+        <Contact />
+      </div>
     </div>
   );
 }

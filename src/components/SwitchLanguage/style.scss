@@ -1,0 +1,7 @@
+@import '../../sass/variables.scss';
+@import '../../sass/functions.scss';
+
+.all-switch-language {
+  @include flexBox(row, space-between);
+  width: 280px;
+}

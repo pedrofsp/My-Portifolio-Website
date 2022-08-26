@@ -42,6 +42,9 @@
       .content {
         .flex-topics {
           flex-direction: column;
+          .flex-space {
+            @include verticalSpace(20px);
+          }
         }
       }
     }

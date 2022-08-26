@@ -10,62 +10,36 @@ const Contact = ({ english }) => {
     <div className="all-contact">
       <div className="center-content">
         <div className="content">
-          <TitleComponent text="Contact" />
-          {english ? (
-            <div className="flex-topics">
-              <div>
-                <h5>Phone</h5>
-                <p>🇧🇷 +55 35 98885-3741</p>
-                <p>🇵🇹 +351 913 438 068</p>
-              </div>
-              <div>
-                <h5>Email</h5>
-                <p>pedrohenriquefsp90@gmail.com</p>
-              </div>
-              <div>
-                <h5>Social Media</h5>
-                <a
-                  href="https://www.linkedin.com/in/pedro-presotto/"
-                  target="_blank"
-                >
-                  <img src={Linkedin} />
-                </a>
-                <a
-                  href="https://www.instagram.com/pedro_presotto/"
-                  target="_blank"
-                >
-                  <img src={Instagram} />
-                </a>
-              </div>
+          <TitleComponent text={english ? 'Contact' : 'Contato'} />
+          <div className="flex-topics">
+            <div className="flex-space"></div>
+            <div>
+              <h5>{english ? 'Phone' : 'Telefone/Telemovel'}</h5>
+              <p>🇧🇷 +55 35 98885-3741</p>
+              <p>🇵🇹 +351 913 438 068</p>
             </div>
-          ) : (
-            <div className="flex-topics">
-              <div>
-                <h5>Telefone/Telemovel</h5>
-                <p>🇧🇷 +55 35 98885-3741</p>
-                <p>🇵🇹 +351 913 438 068</p>
-              </div>
-              <div>
-                <h5>Email</h5>
-                <p>pedrohenriquefsp90@gmail.com</p>
-              </div>
-              <div>
-                <h5>Redes Sociais</h5>
-                <a
-                  href="https://www.linkedin.com/in/pedro-presotto/"
-                  target="_blank"
-                >
-                  <img src={Linkedin} />
-                </a>
-                <a
-                  href="https://www.instagram.com/pedro_presotto/"
-                  target="_blank"
-                >
-                  <img src={Instagram} />
-                </a>
-              </div>
+            <div className="flex-space"></div>
+            <div>
+              <h5>Email</h5>
+              <p>pedrohenriquefsp90@gmail.com</p>
             </div>
-          )}
+            <div className="flex-space"></div>
+            <div>
+              <h5>{english ? 'Social Media' : 'Redes Sociais'}</h5>
+              <a
+                href="https://www.linkedin.com/in/pedro-presotto/"
+                target="_blank"
+              >
+                <img src={Linkedin} />
+              </a>
+              <a
+                href="https://www.instagram.com/pedro_presotto/"
+                target="_blank"
+              >
+                <img src={Instagram} />
+              </a>
+            </div>
+          </div>
         </div>
       </div>
       <div className="bottom">
