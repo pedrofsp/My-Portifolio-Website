@@ -17,6 +17,9 @@
           height: $imageSize;
           margin-right: 20px;
         }
+        .flex-space-topics {
+          display: none;
+        }
       }
     }
   }
@@ -42,7 +45,7 @@
       .content {
         .flex-topics {
           flex-direction: column;
-          .flex-space {
+          .flex-space-topics {
             @include verticalSpace(20px);
           }
         }

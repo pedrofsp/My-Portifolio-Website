@@ -20,7 +20,7 @@ const Introduction = ({ english, dispatch }) => {
             <div className="left">
               <h2>
                 {english
-                  ? 'Welcome to my Portifolio!'
+                  ? 'Welcome to my Portifólio!'
                   : 'Bem vindo ao meu portifolio!'}
               </h2>
               <div className="flex-button">
