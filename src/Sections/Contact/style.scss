@@ -1,5 +1,5 @@
-@import '../../sass/variables.scss';
-@import '../../sass/functions.scss';
+@import "../../sass/variables.scss";
+@import "../../sass/functions.scss";
 
 .all-contact {
   @include flexBox(column, space-between);

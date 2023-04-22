@@ -1,5 +1,5 @@
-@import '../../sass/variables.scss';
-@import '../../sass/functions.scss';
+@import "../../sass/variables.scss";
+@import "../../sass/functions.scss";
 
 .all-about {
   width: 100%;
@@ -19,7 +19,6 @@
       .stack {
         @include flexBox(row, center);
         width: 40%;
-        height: 200px;
         flex-wrap: wrap;
         .flex-stack {
           display: flex;

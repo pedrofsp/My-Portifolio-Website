@@ -1,20 +1,20 @@
-import React from 'react';
-import TitleComponent from '../../components/Title';
-import './style.scss';
-import Linkedin from '../../assets/Images/linkedin.png';
-import Instagram from '../../assets/Images/instagram.png';
-import { connect } from 'react-redux';
+import React from "react";
+import TitleComponent from "../../components/Title";
+import "./style.scss";
+import Linkedin from "../../assets/Images/linkedin.png";
+import Instagram from "../../assets/Images/instagram.png";
+import { connect } from "react-redux";
 
 const Contact = ({ english }) => {
   return (
     <div className="all-contact">
       <div className="center-content">
         <div className="content">
-          <TitleComponent text={english ? 'Contact' : 'Contato'} />
+          <TitleComponent text={english ? "Contact" : "Contato"} />
           <div className="flex-topics">
             <div className="flex-space-topics"></div>
             <div>
-              <h5>{english ? 'Phone' : 'Telefone/Telemóvel'}</h5>
+              <h5>{english ? "Phone" : "Telefone/Telemóvel"}</h5>
               <p>🇧🇷 +55 35 98885-3741</p>
               <p>🇵🇹 +351 913 438 068</p>
             </div>
@@ -25,7 +25,7 @@ const Contact = ({ english }) => {
             </div>
             <div className="flex-space-topics"></div>
             <div>
-              <h5>{english ? 'Social Media' : 'Redes Sociais'}</h5>
+              <h5>{english ? "Social Media" : "Redes Sociais"}</h5>
               <a
                 href="https://www.linkedin.com/in/pedro-presotto/"
                 target="_blank"
@@ -47,8 +47,8 @@ const Contact = ({ english }) => {
       <div className="bottom">
         <p>
           {english
-            ? 'Development by Pedro Presotto 2022'
-            : 'Desenvolvido por Pedro Presotto 2022'}
+            ? "Design and Development by Pedro Presotto 2022"
+            : "Design e Desenvolvimento por Pedro Presotto 2022"}
         </p>
       </div>
     </div>

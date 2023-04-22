@@ -1,5 +1,5 @@
-@import '../../sass/functions.scss';
-@import '../../sass/variables.scss';
+@import "../../sass/functions.scss";
+@import "../../sass/variables.scss";
 
 $imageheight: 65px;
 
@@ -26,7 +26,7 @@ $imageheight: 65px;
   }
 
   .center-link {
-    // background-color: lawngreen;
+    cursor: pointer;
     align-self: center;
     .links {
       @include flexBox(row, center);

@@ -1,24 +1,28 @@
-import React from 'react';
-import StackComponent from '../../components/Stack';
-import TitleComponent from '../../components/Title';
-import { connect } from 'react-redux';
-import './style.scss';
+import React from "react";
+import StackComponent from "../../components/Stack";
+import TitleComponent from "../../components/Title";
+import { connect } from "react-redux";
+import "./style.scss";
 
 const About = ({ english }) => {
   const stackArray = [
-    'Vue Js',
-    'React Js',
-    'React Native',
-    'Django REST API',
-    'Firebase',
-    'Sass',
-    'Bootstrap',
-    'Scrum',
-    'Git / Github / Gitlab',
-    'C/C++',
-    'Python',
-    'Java',
-    'Figma',
+    "Vue Js",
+    "React Js",
+    "React Native",
+    "Django REST API",
+    "Firebase",
+    "Sass",
+    "Bootstrap",
+    "Scrum",
+    "Git / Github / Gitlab",
+    "C/C++",
+    "Python",
+    "Java",
+    "Figma",
+    "Node",
+    "Express",
+    "Mongo",
+    "Mysql",
   ];
 
   const listStack = stackArray.map((item) => (
@@ -31,7 +35,7 @@ const About = ({ english }) => {
   return (
     <div className="all-about">
       <div className="content">
-        <TitleComponent text={english ? 'My career so far' : 'Minha jornada'} />
+        <TitleComponent text={english ? "My career so far" : "Minha jornada"} />
         <div className="flex-content">
           {english ? (
             <p>

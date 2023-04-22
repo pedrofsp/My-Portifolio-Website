@@ -1,10 +1,10 @@
-import './App.scss';
-import { Provider } from 'react-redux';
-import store from './store';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import ErrorPage from './pages/ErrorPage';
-import Navbar from './components/navbar';
+import "./App.scss";
+import { Provider } from "react-redux";
+import store from "./store";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import ErrorPage from "./pages/ErrorPage";
+import Navbar from "./components/navbar";
 
 function App() {
   return (

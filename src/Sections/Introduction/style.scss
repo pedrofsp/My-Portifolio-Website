@@ -1,9 +1,10 @@
-@import '../../sass/variables.scss';
-@import '../../sass/functions.scss';
+@import "../../sass/variables.scss";
+@import "../../sass/functions.scss";
 
 .all-introduction {
   background-color: $gray;
   width: 100%;
+  overflow: hidden;
   @include flexBox(row, center);
 
   .content {

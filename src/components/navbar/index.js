@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import Logo from '../../assets/Logo.png';
-import { Link } from 'react-scroll';
-import { connect } from 'react-redux';
-import './style.scss';
-import SwitchLanguage from '../SwitchLanguage';
+import React, { useEffect, useState } from "react";
+import Logo from "../../assets/Logo.png";
+import { Link } from "react-scroll";
+import { connect } from "react-redux";
+import "./style.scss";
+import SwitchLanguage from "../SwitchLanguage";
 
 const Navbar = ({ english }) => {
   const [openNav, setOpenNav] = useState(true);
 
   useEffect(() => {
-    if (window.screen.width < 1024) {
+    if (window.outerWidth < 1024) {
       setOpenNav(false);
     }
   }, []);
@@ -138,7 +138,7 @@ const Navbar = ({ english }) => {
                     setOpenNav(false);
                   }}
                 >
-                  Contact
+                  Contato
                 </Link>
                 <div className="flex-space"></div>
                 <div className="language">
