@@ -1,158 +1,59 @@
-import React, { useEffect, useState } from "react";
-import Logo from "../../assets/Logo.png";
-import { Link } from "react-scroll";
+import React from "react";
+import Logo from "../../assets/Logo.svg";
+import { Link as ScrollLink } from "react-scroll";
 import { connect } from "react-redux";
-import "./style.scss";
 import SwitchLanguage from "../SwitchLanguage";
+import { Navbar, Nav, Container } from "react-bootstrap";
 
-const Navbar = ({ english }) => {
-  const [openNav, setOpenNav] = useState(true);
-
-  useEffect(() => {
-    if (window.outerWidth < 1024) {
-      setOpenNav(false);
-    }
-  }, []);
+const NavbarComponent = ({ english }) => {
+  const topics = [
+    { namePT: "Carreira", nameEN: "Carrer", to: "career" },
+    { namePT: "Seviços", nameEN: "Services", to: "services" },
+    { namePT: "Experiencias", nameEN: "Experiences", to: "experiences" },
+    { namePT: "CV", nameEN: "CV", to: "cv" },
+    { namePT: "Contato", nameEN: "Contact", to: "contact" },
+  ];
 
   return (
-    <div className="all-nav">
-      <div className="flex-nav">
-        <div className="image-center">
-          <img src={Logo} alt="Logo" />
+    <Navbar bg="light" expand="lg" className="fixed-top">
+      <Container>
+        <div className="d-flex justify-content-between w-100">
+          <ScrollLink to="top">
+            <img
+              src={Logo}
+              alt="logo"
+              style={{ width: "250px", cursor: "pointer" }}
+            />
+          </ScrollLink>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
         </div>
-        <div className="toggle" onClick={() => setOpenNav(!openNav)}>
-          <div className="hamburguer">
-            <div className="line"></div>
-            <div className="line"></div>
-            <div className="line"></div>
-          </div>
+        <div className="w-100">
+          <Navbar.Collapse id="basic-navbar-nav ">
+            <Nav className="mr-auto w-100 justify-content-end">
+              {topics.map((item) => (
+                <ScrollLink
+                  className="fs-5 p-3 text-dark text-center font-weight-bold"
+                  to={item.to}
+                  offset={-120}
+                  style={{
+                    textDecoration: "none",
+                    cursor: "pointer",
+                  }}
+                >
+                  {english ? item.nameEN : item.namePT}
+                </ScrollLink>
+              ))}
+              <div className="d-flex justify-content-center align-items-center px-3">
+                <SwitchLanguage />
+              </div>
+            </Nav>
+          </Navbar.Collapse>
         </div>
-        {english ? (
-          <div className="center-link">
-            {openNav && (
-              <div className="links">
-                <Link
-                  to="career"
-                  offset={-120}
-                  onClick={() => {
-                    setOpenNav(false);
-                  }}
-                >
-                  Career
-                </Link>
-                <div className="flex-space"></div>
-                <Link
-                  to="services"
-                  offset={-120}
-                  onClick={() => {
-                    setOpenNav(false);
-                  }}
-                >
-                  Services
-                </Link>
-                <div className="flex-space"></div>
-                <Link
-                  to="experiences"
-                  offset={-120}
-                  onClick={() => {
-                    setOpenNav(false);
-                  }}
-                >
-                  Experencies
-                </Link>
-                <div className="flex-space"></div>
-                <Link
-                  to="cv"
-                  offset={-120}
-                  onClick={() => {
-                    setOpenNav(false);
-                  }}
-                >
-                  CV
-                </Link>
-                <div className="flex-space"></div>
-                <Link
-                  to="contact"
-                  offset={-120}
-                  onClick={() => {
-                    setOpenNav(false);
-                  }}
-                >
-                  Contact
-                </Link>
-                <div className="flex-space"></div>
-                <div className="language">
-                  <SwitchLanguage />
-                </div>
-              </div>
-            )}
-          </div>
-        ) : (
-          <div className="center-link">
-            {openNav && (
-              <div className="links">
-                <Link
-                  to="career"
-                  offset={-120}
-                  onClick={() => {
-                    setOpenNav(false);
-                  }}
-                >
-                  Jornada
-                </Link>
-                <div className="flex-space"></div>
-                <Link
-                  to="services"
-                  offset={-120}
-                  onClick={() => {
-                    setOpenNav(false);
-                  }}
-                >
-                  Serviços
-                </Link>
-                <div className="flex-space"></div>
-                <Link
-                  to="experiences"
-                  offset={-120}
-                  onClick={() => {
-                    setOpenNav(false);
-                  }}
-                >
-                  Experiências
-                </Link>
-                <div className="flex-space"></div>
-                <Link
-                  to="cv"
-                  offset={-120}
-                  onClick={() => {
-                    setOpenNav(false);
-                  }}
-                >
-                  CV
-                </Link>
-                <div className="flex-space"></div>
-                <Link
-                  to="contact"
-                  offset={-120}
-                  onClick={() => {
-                    setOpenNav(false);
-                  }}
-                >
-                  Contato
-                </Link>
-                <div className="flex-space"></div>
-                <div className="language">
-                  <SwitchLanguage />
-                </div>
-              </div>
-            )}
-          </div>
-        )}
-      </div>
-    </div>
+      </Container>
+    </Navbar>
   );
 };
 
 export default connect((state) => ({
   english: state.english,
-}))(Navbar);
+}))(NavbarComponent);

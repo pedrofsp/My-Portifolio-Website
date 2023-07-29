@@ -10,7 +10,9 @@ import "./style.scss";
 export default function Home() {
   return (
     <div className="all-home">
-      <Introduction />
+      <div id="top">
+        <Introduction />
+      </div>
       <div className="space"></div>
       <div id="career">
         <About />

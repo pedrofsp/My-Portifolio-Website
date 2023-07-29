@@ -1,7 +1,7 @@
 import React from "react";
 import ButtonComponent from "../../components/Button";
 import "./style.scss";
-import Photo from "../../assets/foto_1.png";
+import Photo from "../../assets/foto_de_trage_sem_fundo_resolucao_original.png";
 import { connect } from "react-redux";
 
 function toggleLanguage(english) {
