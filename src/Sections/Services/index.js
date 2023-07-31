@@ -1,45 +1,53 @@
-import React from 'react';
-import CardServices from '../../components/cardServices';
-import TitleComponent from '../../components/Title';
-import FrontEnd from '../../assets/frontend.png';
-import Backend from '../../assets/Images/backend.png';
-import Mobile from '../../assets/Images/mobile.png';
-import './style.scss';
-import { connect } from 'react-redux';
+import React from "react";
+import CardServices from "../../components/cardServices";
+import TitleComponent from "../../components/Title";
+import FrontEnd from "../../assets/frontend.png";
+import Backend from "../../assets/Images/backend.png";
+import Mobile from "../../assets/Images/mobile.png";
+import { connect } from "react-redux";
+import { Container } from "react-bootstrap";
 
 const Services = ({ english }) => {
-  return (
-    <div className="all-services">
-      <div className="content">
-        <TitleComponent
-          text={
-            english ? 'What Services you will Get from me?' : 'Meus servicos'
-          }
+  const servicesArr = [
+    {
+      textEN: "Front-end Development",
+      textPT: "Desenvolvimento Front-end",
+      img: FrontEnd,
+    },
+    {
+      textEN: "Mobile Development",
+      textPT: "Desenvolvimento Mobile",
+      img: Mobile,
+    },
+    {
+      textEN: "Back-end Development",
+      textPT: "Desenvolvimento Back-end",
+      img: Backend,
+    },
+  ];
+
+  const listServices = servicesArr.map((item) => (
+    <div className="d-flex justify-content-center">
+      <div className="d-flex flex-column">
+        <CardServices
+          text={english ? item.textEN : item.textPT}
+          image={item.img}
         />
-        <div className="center-carousel">
-          <div className="center-card">
-            <CardServices
-              text={
-                english ? 'Front-end Development' : 'Desenvolvimento Front-end'
-              }
-              image={FrontEnd}
-            />
-          </div>
-          <div className="center-card">
-            <CardServices
-              text={english ? 'Mobile Development' : 'Desenvolvimento Mobile'}
-              image={Mobile}
-            />
-          </div>
-          <div className="center-card">
-            <CardServices
-              text={english ? 'Backend Development' : 'Desenvolvimento Backend'}
-              image={Backend}
-            />
-          </div>
-        </div>
+        <div className="d-md-none my-3"></div>
       </div>
     </div>
+  ));
+
+  return (
+    <Container>
+      <TitleComponent
+        text={english ? "What Services you will Get from me?" : "Meus servicos"}
+      />
+      <div className="d-flex flex-column flex-md-row justify-content-between">
+        {listServices}
+      </div>
+    </Container>
+    // <div></div>
   );
 };
 
