@@ -1,5 +1,8 @@
 /*CSS RESET*/
 
+@import "./sass/functions.scss";
+@import "./sass/variables.scss";
+
 html,
 body,
 div,
@@ -110,7 +113,7 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: '';
+  content: "";
   content: none;
 }
 table {

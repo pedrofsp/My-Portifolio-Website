@@ -1,10 +1,21 @@
-import React from 'react';
-import './style.scss';
+import React from "react";
+import { Button } from "react-bootstrap";
 
 export default function StackComponent(props) {
   return (
-    <div className={`all-stack-component ${props.small ? 'small' : ''}`}>
-      <span>{props.text}</span>
-    </div>
+    <Button
+      disabled
+      variant="outline"
+      className="my-2"
+      size={props.small ? "sm" : "md"}
+      style={{
+        borderWidth: "3px",
+        color: "black",
+        fontWeight: "bold",
+        marginRight: "20px",
+      }}
+    >
+      {props.text}
+    </Button>
   );
 }
