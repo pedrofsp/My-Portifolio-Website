@@ -16,7 +16,7 @@ const Introduction = ({ english, dispatch }) => {
         <div className="d-flex flex-md-column justify-content-center align-center">
           <div style={{ width: `${isMobile() ? "80%" : "unset"}` }}>
             <h2
-              className="welcome-text display-4"
+              className="montserrat-semi-bold display-4"
               style={{ fontWeight: "bold" }}
             >
               {english

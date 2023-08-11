@@ -2,17 +2,13 @@ import React from "react";
 import cvEnglish from "../../assets/CV/pedro_presotto_cv_english.pdf";
 import { connect } from "react-redux";
 import { Button } from "react-bootstrap";
-import "./style.scss";
 
 const CV = ({ english }) => {
   return (
-    <div
-      className="d-flex justify-content-center py-5"
-      style={{ backgroundColor: "#ff2727" }}
-    >
+    <div className="background-red d-flex justify-content-center py-5">
       <div>
         <h4
-          className="cv-text text-center text-white"
+          className="montserrat-semi-bold text-center text-white"
           style={{ fontSize: "30px" }}
         >
           {english
@@ -22,10 +18,7 @@ const CV = ({ english }) => {
         <div className="my-4"></div>
         <div className="d-flex justify-content-center">
           <a href={cvEnglish} target="_blank" rel="noreferrer">
-            <Button
-              variant="light"
-              style={{ color: "#ff2727", fontWeight: "bold" }}
-            >
+            <Button variant="light" className="montserrat-semi-bold font-red">
               Download
             </Button>
           </a>

@@ -3,7 +3,6 @@ import StackComponent from "../../components/Stack";
 import TitleComponent from "../../components/Title";
 import { connect } from "react-redux";
 import { Container } from "react-bootstrap";
-import "./style.scss";
 import { isMobile } from "../../functions/functions";
 
 const About = ({ english }) => {
@@ -41,7 +40,7 @@ const About = ({ english }) => {
       <TitleComponent text={english ? "My career so far" : "Minha jornada"} />
       <div className="d-flex flex-column flex-md-row">
         <p
-          className={isMobile() ? "" : "lead"}
+          className={`montserrat-regular ${isMobile() ? "" : "lead"}`}
           style={{
             flex: 1.5,
           }}
