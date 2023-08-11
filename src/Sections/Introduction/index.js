@@ -1,51 +1,40 @@
 import React from "react";
-import ButtonComponent from "../../components/Button";
 import "./style.scss";
 import Photo from "../../assets/foto_de_trage_sem_fundo_resolucao_original.png";
 import { connect } from "react-redux";
-
-function toggleLanguage(english) {
-  return {
-    type: "TOGGLE_LANGUAGE",
-    english,
-  };
-}
+import { Container } from "react-bootstrap";
+import SwitchLanguage from "../../components/SwitchLanguage";
+import { isMobile } from "../../functions/functions";
 
 const Introduction = ({ english, dispatch }) => {
   return (
-    <div className="all-introduction">
-      <div className="content">
-        <div className="flex-content">
-          <div className="left">
-            <h2>
+    <div style={{ backgroundColor: "lightgray" }}>
+      <Container
+        className="d-flex flex-column flex-md-row justify-content-between mt-4 mt-md-0"
+        style={{ position: "relative", bottom: "-20px" }}
+      >
+        <div className="d-flex flex-md-column justify-content-center align-center">
+          <div style={{ width: `${isMobile() ? "80%" : "unset"}` }}>
+            <h2
+              className="welcome-text display-4"
+              style={{ fontWeight: "bold" }}
+            >
               {english
                 ? "Welcome to my Portifólio!"
                 : "Bem vindo ao meu portifolio!"}
             </h2>
-            <div className="flex-button">
-              <ButtonComponent
-                onClick={() => {
-                  dispatch(toggleLanguage(true));
-                }}
-                text="English"
-                color={english ? "red" : "outline"}
-              />
-              <div className="flex-space"></div>
-              <ButtonComponent
-                onClick={() => {
-                  dispatch(toggleLanguage(false));
-                }}
-                text="Portuguese"
-                color={english ? "outline" : "red"}
-              />
-            </div>
+            <SwitchLanguage />
           </div>
-          <div className="right">
-            <img src={Photo} alt="Foto" />
-          </div>
-          <div className="elipse"></div>
         </div>
-      </div>
+        <div className="d-flex justify-content-center">
+          <img
+            src={Photo}
+            alt="Foto"
+            style={{ height: `${isMobile() ? "300px" : "unset"}` }}
+          />
+        </div>
+      </Container>
+      <div className="elipse"></div>
     </div>
   );
 };

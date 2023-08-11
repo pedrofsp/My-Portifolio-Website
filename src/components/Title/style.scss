@@ -1,8 +1,10 @@
-@import '../../sass/variables.scss';
-@import '../../sass/functions.scss';
+@import "../../sass/variables.scss";
+@import "../../sass/functions.scss";
 
 .all-title-component {
   margin-bottom: 20px;
+
+  font-family: MontserratSemiBold;
 
   h1 {
     font-size: 35px;
