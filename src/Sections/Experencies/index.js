@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import TitleComponent from "../../components/Title";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
-import "./style.scss";
 import { connect } from "react-redux";
 import ExperiencesCard from "../../components/ExperiencesCard";
 import CompJunior from "../../assets/Images/compjunior.png";
@@ -10,6 +9,7 @@ import Construpontes from "../../assets/Images/construpontes.png";
 import HHS from "../../assets/Images/hhs.png";
 import Sigma from "../../assets/Images/sigma.png";
 import Icount from "../../assets/Images/icount.png";
+import { Container } from "react-bootstrap";
 
 const Experencies = ({ english }) => {
   const [experiences] = useState([
@@ -119,21 +119,20 @@ const Experencies = ({ english }) => {
     },
   ]);
 
-  const listExperiences = experiences.map((item) => {
+  const listExperiences = experiences.map((company) => {
     return (
       <TabPanel>
-        {item.experiences.map((item2) => {
+        {company.experiences.map((project) => {
           return (
             <div>
-              <div className="flex-space"></div>
+              <br />
               <ExperiencesCard
-                title={english ? item2.title.en : item2.title.pt}
-                text={english ? item2.text.en : item2.text.pt}
-                date={item2.date}
-                img={item2.img}
-                stack={item2.stack}
+                title={english ? project.title.en : project.title.pt}
+                text={english ? project.text.en : project.text.pt}
+                date={project.date}
+                img={project.img}
+                stack={project.stack}
               />
-              <div className="flex-space"></div>
             </div>
           );
         })}
@@ -141,13 +140,13 @@ const Experencies = ({ english }) => {
     );
   });
 
-  const listCompanies = experiences.map((item) => {
-    return <Tab>{item.company}</Tab>;
+  const listCompanies = experiences.map((company) => {
+    return <Tab>{company.company}</Tab>;
   });
 
   return (
-    <div className="all-experencies">
-      <div className="content">
+    <Container>
+      <div>
         <TitleComponent
           text={
             english
@@ -160,7 +159,7 @@ const Experencies = ({ english }) => {
           {listExperiences}
         </Tabs>
       </div>
-    </div>
+    </Container>
   );
 };
 
