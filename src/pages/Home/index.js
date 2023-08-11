@@ -10,7 +10,7 @@ import "./style.scss";
 export default function Home() {
   return (
     <div className="all-home">
-      <div className="space" style={{backgroundColor:"lightgray"}}></div>
+      <div className="space" style={{ backgroundColor: "lightgray" }}></div>
       <div id="top">
         <Introduction />
       </div>
