@@ -1,6 +1,6 @@
 import React from "react";
 import "./style.scss";
-import Photo from "../../assets/foto_de_trage_sem_fundo_resolucao_original.png";
+import Photo from "../../assets/Images/foto_de_trage_sem_fundo_resolucao_original.png";
 import { connect } from "react-redux";
 import { Container } from "react-bootstrap";
 import SwitchLanguage from "../../components/SwitchLanguage";
@@ -20,8 +20,8 @@ const Introduction = ({ english, dispatch }) => {
               style={{ fontWeight: "bold" }}
             >
               {english
-                ? "Welcome to my Portifólio!"
-                : "Bem vindo ao meu portifolio!"}
+                ? "Welcome to my portifolio!"
+                : "Bem vindo ao meu portfólio!"}
             </h2>
             <SwitchLanguage />
           </div>

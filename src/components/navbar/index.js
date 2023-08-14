@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../../assets/Logo.svg";
+import Logo from "../../assets/Images/Logo.svg";
 import { Link as ScrollLink } from "react-scroll";
 import { connect } from "react-redux";
 import SwitchLanguage from "../SwitchLanguage";
@@ -9,7 +9,7 @@ const NavbarComponent = ({ english }) => {
   const topics = [
     { namePT: "Carreira", nameEN: "Carrer", to: "career" },
     { namePT: "Seviços", nameEN: "Services", to: "services" },
-    { namePT: "Experiencias", nameEN: "Experiences", to: "experiences" },
+    { namePT: "Experiências", nameEN: "Experiences", to: "experiences" },
     { namePT: "CV", nameEN: "CV", to: "cv" },
     { namePT: "Contato", nameEN: "Contact", to: "contact" },
   ];
@@ -43,7 +43,10 @@ const NavbarComponent = ({ english }) => {
                   {english ? item.nameEN : item.namePT}
                 </ScrollLink>
               ))}
-              <div className="d-flex justify-content-center align-items-center px-3">
+              <div
+                className="d-flex justify-content-center align-items-center"
+                style={{ marginLeft: "10px" }}
+              >
                 <SwitchLanguage />
               </div>
             </Nav>

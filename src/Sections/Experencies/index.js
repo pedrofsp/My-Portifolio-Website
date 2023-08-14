@@ -151,7 +151,7 @@ const Experencies = ({ english }) => {
           text={
             english
               ? "My professional experencies"
-              : "Minhas esperiencias Profissionais"
+              : "Minhas experiências Profissionais"
           }
         />
         <Tabs>

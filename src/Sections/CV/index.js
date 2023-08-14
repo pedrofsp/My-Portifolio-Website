@@ -1,5 +1,6 @@
 import React from "react";
 import cvEnglish from "../../assets/CV/pedro_presotto_cv_english.pdf";
+import cvPortuguese from "../../assets/CV/pedro_presotto_cv_portuguese.pdf";
 import { connect } from "react-redux";
 import { Button } from "react-bootstrap";
 
@@ -17,7 +18,11 @@ const CV = ({ english }) => {
         </h4>
         <div className="my-4"></div>
         <div className="d-flex justify-content-center">
-          <a href={cvEnglish} target="_blank" rel="noreferrer">
+          <a
+            href={english ? cvEnglish : cvPortuguese}
+            target="_blank"
+            rel="noreferrer"
+          >
             <Button variant="light" className="montserrat-semi-bold font-red">
               Download
             </Button>

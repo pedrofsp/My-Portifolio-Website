@@ -1,7 +1,7 @@
 import React from "react";
 import CardServices from "../../components/cardServices";
 import TitleComponent from "../../components/Title";
-import FrontEnd from "../../assets/frontend.png";
+import FrontEnd from "../../assets/Images/frontend.png";
 import Backend from "../../assets/Images/backend.png";
 import Mobile from "../../assets/Images/mobile.png";
 import { connect } from "react-redux";
@@ -41,7 +41,7 @@ const Services = ({ english }) => {
   return (
     <Container>
       <TitleComponent
-        text={english ? "What Services you will Get from me?" : "Meus servicos"}
+        text={english ? "What Services you will get from me?" : "Meus serviços"}
       />
       <div className="d-flex flex-column flex-md-row justify-content-between">
         {listServices}
