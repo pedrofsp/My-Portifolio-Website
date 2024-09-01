@@ -1,10 +1,10 @@
 import React from "react";
 import "./style.scss";
-import Photo from "../../assets/Images/foto_de_trage_sem_fundo_resolucao_original.png";
+import Photo from "../../../assets/Images/foto_de_trage_sem_fundo_resolucao_original.png";
 import { connect } from "react-redux";
 import { Container } from "react-bootstrap";
-import SwitchLanguage from "../../components/SwitchLanguage";
-import { isMobile } from "../../functions/functions";
+import SwitchLanguage from "../../../components/SwitchLanguage";
+import { isMobile } from "../../../functions/functions";
 
 const Introduction = ({ english, dispatch }) => {
   return (

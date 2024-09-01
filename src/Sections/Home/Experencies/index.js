@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import TitleComponent from "../../components/Title";
+import TitleComponent from "../../../components/Title";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import { connect } from "react-redux";
-import ExperiencesCard from "../../components/ExperiencesCard";
-import CompJunior from "../../assets/Images/compjunior.png";
-import Construpontes from "../../assets/Images/construpontes.png";
-import HHS from "../../assets/Images/hhs.png";
-import Sigma from "../../assets/Images/sigma.png";
-import Icount from "../../assets/Images/icount.png";
+import ExperiencesCard from "../../../components/ExperiencesCard";
+import CompJunior from "../../../assets/Images/compjunior.png";
+import Construpontes from "../../../assets/Images/construpontes.png";
+import HHS from "../../../assets/Images/hhs.png";
+import Sigma from "../../../assets/Images/sigma.png";
+import Icount from "../../../assets/Images/icount.png";
 import { Container } from "react-bootstrap";
 
 const Experencies = ({ english }) => {

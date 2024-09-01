@@ -1,37 +1,26 @@
 import React from "react";
-import CardServices from "../../components/cardServices";
-import TitleComponent from "../../components/Title";
-import FrontEnd from "../../assets/Images/frontend.png";
-import Backend from "../../assets/Images/backend.png";
-import Mobile from "../../assets/Images/mobile.png";
+import CardServices from "../../../components/cardServices";
+import TitleComponent from "../../../components/Title";
 import { connect } from "react-redux";
 import { Container } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import { fetchData } from "../../../Utils/RealtimeDatabaseUtils";
 
 const Services = ({ english }) => {
-  const servicesArr = [
-    {
-      textEN: "Front-end Development",
-      textPT: "Desenvolvimento Front-end",
-      img: FrontEnd,
-    },
-    {
-      textEN: "Mobile Development",
-      textPT: "Desenvolvimento Mobile",
-      img: Mobile,
-    },
-    {
-      textEN: "Back-end Development",
-      textPT: "Desenvolvimento Back-end",
-      img: Backend,
-    },
-  ];
+  const [services, setServices] = useState([]);
 
-  const listServices = servicesArr.map((item) => (
+  useEffect(() => {
+    fetchData("/servicesSection/services.json").then((res) => {
+      if (res) setServices(res);
+    });
+  }, []);
+
+  const listServices = services.map((item) => (
     <div className="d-flex justify-content-center">
       <div className="d-flex flex-column">
         <CardServices
           text={english ? item.textEN : item.textPT}
-          image={item.img}
+          image={item.image}
         />
         <div className="d-md-none my-3"></div>
       </div>

@@ -1,6 +1,6 @@
 import React from "react";
-import cvEnglish from "../../assets/CV/pedro_presotto_cv_english.pdf";
-import cvPortuguese from "../../assets/CV/pedro_presotto_cv_portuguese.pdf";
+import cvEnglish from "../../../assets/CV/pedro_presotto_cv_english.pdf";
+import cvPortuguese from "../../../assets/CV/pedro_presotto_cv_portuguese.pdf";
 import { connect } from "react-redux";
 import { Button } from "react-bootstrap";
 

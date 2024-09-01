@@ -1,15 +1,17 @@
 import React from "react";
-import Introduction from "../../Sections/Introduction";
-import Services from "../../Sections/Services";
-import About from "../../Sections/About";
-import Experiencies from "../../Sections/Experencies";
-import Contact from "../../Sections/Contact";
-import CV from "../../Sections/CV";
+import Introduction from "../../Sections/Home/Introduction";
+import Services from "../../Sections/Home/Services";
+import About from "../../Sections/Home/About";
+import Experiencies from "../../Sections/Home/Experencies";
+import Contact from "../../Sections/Home/Contact";
+import CV from "../../Sections/Home/CV";
+import Navbar from "../../components/navbar";
 import "./style.scss";
 
 export default function Home() {
   return (
     <div className="all-home">
+      <Navbar />
       <div className="space" style={{ backgroundColor: "lightgray" }}></div>
       <div id="top">
         <Introduction />

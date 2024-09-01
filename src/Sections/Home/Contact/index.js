@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import TitleComponent from "../../components/Title";
-import Linkedin from "../../assets/Images/linkedin.png";
-import Instagram from "../../assets/Images/instagram.png";
+import TitleComponent from "../../../components/Title";
+import Linkedin from "../../../assets/Images/linkedin.png";
+import Instagram from "../../../assets/Images/instagram.png";
 import { connect } from "react-redux";
 import { Container } from "react-bootstrap";
 
