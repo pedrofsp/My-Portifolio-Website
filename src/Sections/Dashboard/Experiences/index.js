@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Container, Button, Form, ListGroup, Modal } from "react-bootstrap";
+import {
+  Container,
+  Button,
+  Form,
+  ListGroup,
+  Modal,
+  Image,
+} from "react-bootstrap";
 import { fetchData, updateData } from "../../../Utils/RealtimeDatabaseUtils";
+import FileBase64 from "react-file-base64";
 
 export default function Experiences() {
   const [companies, setCompanies] = useState([]);
@@ -12,15 +20,20 @@ export default function Experiences() {
     title: { en: "", pt: "" },
     text: { en: "", pt: "" },
     date: "",
-    img: "",
+    image: "",
     stack: [],
   });
-  const [selectedCompany, setSelectedCompany] = useState(null);
+  const [selectedCompany, setSelectedCompany] = useState("");
+  const [selectedStack, setSelectedStack] = useState([]);
+  const [selectedItems, setSelectedItems] = useState(new Set()); // Track selected itemsof the stack
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
+    fetchData("/AboutSection/HardSkills.json").then((res) => {
+      if (res) setSelectedStack(res);
+    });
+
     fetchData("/experiences.json").then((res) => {
-      console.log("aqui:", res.companies);
       if (res) setCompanies(res.companies);
     });
   }, []);
@@ -45,6 +58,19 @@ export default function Experiences() {
     }
   };
 
+  const handleCheckboxChange = (e) => {
+    const value = e.target.value;
+    setSelectedItems((prev) => {
+      const updatedItems = new Set(prev);
+      if (e.target.checked) {
+        updatedItems.add(value);
+      } else {
+        updatedItems.delete(value);
+      }
+      return updatedItems;
+    });
+  };
+
   const addCompany = async () => {
     const updatedCompanies = [...companies, newCompany];
     await updateData("/experiences.json", { companies: updatedCompanies });
@@ -61,47 +87,61 @@ export default function Experiences() {
   };
 
   const addExperience = async () => {
-    const updatedCompanies = companies.map((company) => {
-      if (company.name === selectedCompany) {
-        return {
-          ...company,
-          experiences: [...company.experiences, newExperience],
-        };
-      }
-      return company;
-    });
+    const updatedExperience = {
+      ...newExperience,
+      stack: Array.from(selectedItems),
+    };
+    var updatedCompany = selectedCompany;
+    if (!updatedCompany.experiences) updatedCompany.experiences = [];
+    updatedCompany.experiences.push(updatedExperience);
+    const updatedCompanies = companies.map((company) =>
+      company.name === selectedCompany ? updatedCompany : company
+    );
+    console.log("aqui: ", updatedCompanies);
+
     await updateData("/experiences.json", { companies: updatedCompanies });
     setCompanies(updatedCompanies);
     setNewExperience({
       title: { en: "", pt: "" },
       text: { en: "", pt: "" },
       date: "",
-      img: "",
+      image: "",
       stack: [],
     });
     setShowModal(false);
   };
 
-  const deleteExperience = async (companyName, experienceToDelete) => {
-    const updatedCompanies = companies.map((company) => {
-      if (company.name === companyName) {
-        return {
-          ...company,
-          experiences: company.experiences.filter(
-            (exp) => exp !== experienceToDelete
-          ),
-        };
-      }
-      return company;
-    });
+  const deleteExperience = async (companyName, experienceTitle) => {
+    let updatedCompany = companies.find(
+      (company) => company.name === companyName
+    );
+
+    updatedCompany.experiences = updatedCompany.experiences.filter(
+      (experience) => experience.title.en !== experienceTitle
+    );
+
+    const updatedCompanies = companies.map((company) =>
+      company.name === companyName ? updatedCompany : company
+    );
+
     await updateData("/experiences.json", { companies: updatedCompanies });
     setCompanies(updatedCompanies);
+  };
+
+  const handleImageChange = (file) => {
+    setNewExperience((prevService) => ({ ...prevService, image: file.base64 }));
   };
 
   return (
     <Container>
       <h2>Companies</h2>
-      <Form>
+
+      <Form
+        onSubmit={(e) => {
+          e.preventDefault();
+          addCompany();
+        }}
+      >
         <Form.Group controlId="formCompanyName">
           <Form.Label>Company Name</Form.Label>
           <Form.Control
@@ -111,6 +151,7 @@ export default function Experiences() {
             onChange={handleCompanyChange}
           />
         </Form.Group>
+        <br />
         <Button variant="primary" onClick={addCompany}>
           Add Company
         </Button>
@@ -120,51 +161,69 @@ export default function Experiences() {
         {companies.map((company, index) => (
           <ListGroup.Item key={index}>
             <h5>{company.name}</h5>
-            <Button
-              variant="danger"
-              size="sm"
-              onClick={() => deleteCompany(company.name)}
-              style={{ float: "right" }}
-            >
-              Delete
-            </Button>
-            <Button
-              variant="success"
-              size="sm"
-              onClick={() => {
-                setSelectedCompany(company.name);
-                setShowModal(true);
-              }}
-              style={{ float: "right", marginRight: "10px" }}
-            >
-              Add Experience
-            </Button>
-            <ListGroup>
-              {company.experiences.map((experience, expIndex) => (
-                <ListGroup.Item key={expIndex}>
-                  <h6>{experience.title.en}</h6>
-                  <p>{experience.text.en}</p>
-                  <Button
-                    variant="danger"
-                    size="sm"
-                    onClick={() => deleteExperience(company.name, experience)}
-                    style={{ float: "right" }}
-                  >
-                    Delete
-                  </Button>
-                </ListGroup.Item>
-              ))}
-            </ListGroup>
+            <div className="d-flex flex-column">
+              {company.experiences && (
+                <ListGroup>
+                  {company.experiences.map((experience, expIndex) => (
+                    <ListGroup.Item key={expIndex}>
+                      <div className="d-flex">
+                        <Image width={"150px"} src={experience.image} />
+                        <div className="mx-4 d-flex flex-column justify-content-center">
+                          <h6>{experience.title.en}</h6>
+                          <p>{experience.text.en}</p>
+                        </div>
+                      </div>
+                      <Button
+                        variant="danger"
+                        size="sm"
+                        onClick={() =>
+                          deleteExperience(company.name, experience.title.en)
+                        }
+                        style={{ float: "right" }}
+                      >
+                        Delete
+                      </Button>
+                    </ListGroup.Item>
+                  ))}
+                </ListGroup>
+              )}
+              <div className="my-3 d-flex justify-content-center">
+                <Button
+                  variant="success"
+                  size="sm"
+                  onClick={() => {
+                    setSelectedCompany(company);
+                    setShowModal(true);
+                  }}
+                  style={{ float: "right", marginRight: "10px" }}
+                >
+                  Add Experience
+                </Button>
+                <Button
+                  variant="danger"
+                  size="sm"
+                  onClick={() => deleteCompany(company.name)}
+                  style={{ float: "right" }}
+                >
+                  Delete
+                </Button>
+              </div>
+            </div>
           </ListGroup.Item>
         ))}
       </ListGroup>
 
       <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
-          <Modal.Title>Add Experience</Modal.Title>
+          <Modal.Title>Add Experience on {selectedCompany.name}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form>
+          <Form
+            onSubmit={(e) => {
+              e.preventDefault();
+              addExperience();
+            }}
+          >
             <Form.Group controlId="formTitleEN">
               <Form.Label>Title (EN)</Form.Label>
               <Form.Control
@@ -173,8 +232,10 @@ export default function Experiences() {
                 name="title.en"
                 value={newExperience.title.en}
                 onChange={handleExperienceChange}
+                autoFocus
               />
             </Form.Group>
+            <br />
             <Form.Group controlId="formTitlePT">
               <Form.Label>Title (PT)</Form.Label>
               <Form.Control
@@ -185,6 +246,7 @@ export default function Experiences() {
                 onChange={handleExperienceChange}
               />
             </Form.Group>
+            <br />
             <Form.Group controlId="formTextEN">
               <Form.Label>Text (EN)</Form.Label>
               <Form.Control
@@ -195,6 +257,7 @@ export default function Experiences() {
                 onChange={handleExperienceChange}
               />
             </Form.Group>
+            <br />
             <Form.Group controlId="formTextPT">
               <Form.Label>Text (PT)</Form.Label>
               <Form.Control
@@ -205,6 +268,7 @@ export default function Experiences() {
                 onChange={handleExperienceChange}
               />
             </Form.Group>
+            <br />
             <Form.Group controlId="formDate">
               <Form.Label>Date</Form.Label>
               <Form.Control
@@ -215,38 +279,40 @@ export default function Experiences() {
                 onChange={handleExperienceChange}
               />
             </Form.Group>
-            <Form.Group controlId="formImg">
-              <Form.Label>Image</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter image URL"
-                name="img"
-                value={newExperience.img}
-                onChange={handleExperienceChange}
-              />
+            <br />
+            <Form.Group className="d-flex flex-column" controlId="formImg">
+              <Form.Label>Experience Image</Form.Label>
+              <FileBase64 multiple={false} onDone={handleImageChange} />
             </Form.Group>
+            <br />
             <Form.Group controlId="formStack">
               <Form.Label>Stack</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter stack"
-                name="stack"
-                value={newExperience.stack.join(",")}
-                onChange={(e) =>
-                  setNewExperience((prev) => ({
-                    ...prev,
-                    stack: e.target.value.split(","),
-                  }))
-                }
-              />
+              <ListGroup>
+                {selectedStack.map((stack, index) => (
+                  <ListGroup.Item
+                    key={index}
+                    className="d-flex justify-content-between"
+                  >
+                    <div>{stack}</div>
+                    <input
+                      className="custom-control-input"
+                      type="checkbox"
+                      value={stack}
+                      checked={selectedItems.has(stack)} // Determine if checked
+                      onChange={handleCheckboxChange}
+                    />
+                  </ListGroup.Item>
+                ))}
+              </ListGroup>
             </Form.Group>
+            <Button style={{ display: "none" }} type="submit" />
           </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={() => setShowModal(false)}>
             Close
           </Button>
-          <Button variant="primary" onClick={addExperience}>
+          <Button type="submit" variant="primary" onClick={addExperience}>
             Add Experience
           </Button>
         </Modal.Footer>

@@ -15,8 +15,8 @@ export default function Dashboard() {
       <div className="space"></div>
       <Services />
       <div className="space"></div>
-      {/* <Experiences />
-      <div className="space"></div> */}
+      <Experiences />
+      <div className="space"></div>
     </div>
   );
 }
