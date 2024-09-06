@@ -1,22 +1,47 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import HardSkills from "../../Sections/Dashboard/HardSkills";
 import AboutText from "../../Sections/Dashboard/AboutText";
-import "./style.scss";
 import Services from "../../Sections/Dashboard/Services";
 import Experiences from "../../Sections/Dashboard/Experiences";
+import { useNavigate } from "react-router-dom";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { app } from "../../firebase";
+import User from "../../Sections/Dashboard/User";
 
 export default function Dashboard() {
+  const navigate = useNavigate();
+  const [user, setUser] = useState(false);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(getAuth(app), (user) => {
+      if (!user || user.email != "pedrohenriquefsp90@gmail.com")
+        navigate("/login");
+      else setUser(user);
+      return () => {
+        unsubscribe();
+      };
+    });
+  }, [user, setUser, navigate]);
+
   return (
-    <div className="all-dash">
-      <div className="space"></div>
+    <div>
+      <br />
+      <br />
+      <User user={user} />
+      <br />
+      <br />
       <HardSkills />
-      <div className="space"></div>
+      <br />
+      <br />
       <AboutText />
-      <div className="space"></div>
+      <br />
+      <br />
       <Services />
-      <div className="space"></div>
+      <br />
+      <br />
       <Experiences />
-      <div className="space"></div>
+      <br />
+      <br />
     </div>
   );
 }
