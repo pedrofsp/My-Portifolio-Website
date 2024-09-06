@@ -4,7 +4,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import { connect } from "react-redux";
 import ExperiencesCard from "../../../components/ExperiencesCard";
-import { Container } from "react-bootstrap";
+import { Container, ListGroup } from "react-bootstrap";
 import { fetchData } from "../../../Utils/RealtimeDatabaseUtils";
 
 const Experencies = ({ english }) => {
@@ -19,20 +19,22 @@ const Experencies = ({ english }) => {
   const listExperiences = experiences.map((company) => {
     return (
       <TabPanel>
-        {company.experiences.map((project) => {
-          return (
-            <div>
-              <br />
-              <ExperiencesCard
-                title={english ? project.title.en : project.title.pt}
-                text={english ? project.text.en : project.text.pt}
-                date={project.date}
-                img={project.image}
-                stack={project.stack}
-              />
-            </div>
-          );
-        })}
+        <ListGroup>
+          {company.experiences.map((project) => {
+            return (
+              <div>
+                <br />
+                <ExperiencesCard
+                  title={english ? project.title.en : project.title.pt}
+                  text={english ? project.text.en : project.text.pt}
+                  date={project.date}
+                  img={project.image}
+                  stack={project.stack}
+                />
+              </div>
+            );
+          })}
+        </ListGroup>
       </TabPanel>
     );
   });

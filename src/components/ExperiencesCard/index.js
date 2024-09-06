@@ -1,6 +1,7 @@
 import React from "react";
 import StackComponent from "../Stack";
 import "./style.scss";
+import { Image } from "react-bootstrap";
 
 export default function ExperiencesCard(props) {
   const listStack = props.stack.map((item) => {
@@ -13,8 +14,8 @@ export default function ExperiencesCard(props) {
   });
 
   return (
-    <div className="all-experiences-card">
-      <img src={props.img} alt="imagem" />
+    <div className="all-experiences-card p-3 rounded shadow-sm">
+      <Image rounded src={props.img} alt="imagem" />
       <div className="center-content">
         <div className="content">
           <h4>

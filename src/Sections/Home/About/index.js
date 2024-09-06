@@ -31,6 +31,8 @@ const About = ({ english }) => {
           className={`montserrat-regular ${isMobile() ? "" : "lead"}`}
           style={{
             flex: 1.5,
+            fontSize: "18px",
+            lineHeight: "1.7",
           }}
         >
           {english ? aboutText.en : aboutText.pt}
