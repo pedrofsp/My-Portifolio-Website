@@ -288,21 +288,22 @@ export default function Experiences() {
             <Form.Group controlId="formStack">
               <Form.Label>Stack</Form.Label>
               <ListGroup>
-                {selectedStack.map((stack, index) => (
-                  <ListGroup.Item
-                    key={index}
-                    className="d-flex justify-content-between"
-                  >
-                    <div>{stack}</div>
-                    <input
-                      className="custom-control-input"
-                      type="checkbox"
-                      value={stack}
-                      checked={selectedItems.has(stack)} // Determine if checked
-                      onChange={handleCheckboxChange}
-                    />
-                  </ListGroup.Item>
-                ))}
+                {selectedStack &&
+                  selectedStack.map((stack, index) => (
+                    <ListGroup.Item
+                      key={index}
+                      className="d-flex justify-content-between"
+                    >
+                      <div>{stack}</div>
+                      <input
+                        className="custom-control-input"
+                        type="checkbox"
+                        value={stack}
+                        checked={selectedItems.has(stack)} // Determine if checked
+                        onChange={handleCheckboxChange}
+                      />
+                    </ListGroup.Item>
+                  ))}
               </ListGroup>
             </Form.Group>
             <Button style={{ display: "none" }} type="submit" />

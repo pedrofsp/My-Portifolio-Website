@@ -4,9 +4,9 @@ import "./style.scss";
 import { Image } from "react-bootstrap";
 
 export default function ExperiencesCard(props) {
-  const listStack = props.stack.map((item) => {
+  const listStack = props.stack.map((item, index) => {
     return (
-      <div className="flex-stack-item">
+      <div key={index} className="flex-stack-item">
         <StackComponent text={item} small />
         <div className="flex-space"></div>
       </div>

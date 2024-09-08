@@ -17,15 +17,30 @@ export default function HardSkills() {
     if (newSkill.trim() === "") {
       return;
     }
+
     const updatedSkills = [...hardSkills, newSkill];
-    updateData("/AboutSection/", { HardSkills: updatedSkills });
+
+    const fullData = await fetchData("AboutSection/");
+    const updatedData = {
+      ...fullData,
+      HardSkills: updatedSkills,
+    };
+
+    await updateData("/AboutSection/", updatedData);
     setHardSkills(updatedSkills);
     setNewSkill("");
   };
 
   const deleteSkill = async (skillToDelete) => {
     const updatedSkills = hardSkills.filter((skill) => skill !== skillToDelete);
-    updateData("/AboutSection/", { HardSkills: updatedSkills });
+
+    const fullData = await fetchData("AboutSection/");
+    const updatedData = {
+      ...fullData,
+      HardSkills: updatedSkills,
+    };
+
+    await updateData("/AboutSection/", updatedData);
     setHardSkills(updatedSkills);
   };
 
@@ -54,19 +69,20 @@ export default function HardSkills() {
       </Form>
       <br />
       <ListGroup>
-        {hardSkills.map((skill, index) => (
-          <ListGroup.Item key={index}>
-            {skill}
-            <Button
-              variant="danger"
-              size="sm"
-              onClick={() => deleteSkill(skill)}
-              style={{ float: "right" }}
-            >
-              Delete
-            </Button>
-          </ListGroup.Item>
-        ))}
+        {hardSkills &&
+          hardSkills.map((skill, index) => (
+            <ListGroup.Item key={index}>
+              {skill}
+              <Button
+                variant="danger"
+                size="sm"
+                onClick={() => deleteSkill(skill)}
+                style={{ float: "right" }}
+              >
+                Delete
+              </Button>
+            </ListGroup.Item>
+          ))}
       </ListGroup>
     </Container>
   );

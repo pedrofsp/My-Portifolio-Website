@@ -19,9 +19,10 @@ const Contact = ({ english }) => {
     },
   ]);
 
-  const listSocialMedia = socialMedia.map((item) => {
+  const listSocialMedia = socialMedia.map((item, index) => {
     return (
       <a
+        key={index}
         style={{ marginRight: "10px" }}
         href={item.link}
         target="_blank"

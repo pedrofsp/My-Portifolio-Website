@@ -12,8 +12,6 @@ const About = ({ english }) => {
 
   useEffect(() => {
     fetchData("/AboutSection/aboutText/").then((res) => {
-      console.log(res);
-
       if (res) setAboutText(res);
     });
     fetchData("/AboutSection/HardSkills/").then((res) => {
@@ -21,8 +19,8 @@ const About = ({ english }) => {
     });
   }, []);
 
-  const listStack = stackArray.map((item) => (
-    <StackComponent small={isMobile()} text={item} />
+  const listStack = stackArray.map((item, index) => (
+    <StackComponent key={index} small={isMobile()} text={item} />
   ));
 
   return (

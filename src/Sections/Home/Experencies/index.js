@@ -16,13 +16,13 @@ const Experencies = ({ english }) => {
     });
   });
 
-  const listExperiences = experiences.map((company) => {
+  const listExperiences = experiences.map((company, index) => {
     return (
-      <TabPanel>
+      <TabPanel key={index}>
         <ListGroup>
-          {company.experiences.map((project) => {
+          {company.experiences.map((project, index) => {
             return (
-              <div>
+              <div key={index}>
                 <br />
                 <ExperiencesCard
                   title={english ? project.title.en : project.title.pt}
@@ -39,8 +39,8 @@ const Experencies = ({ english }) => {
     );
   });
 
-  const listCompanies = experiences.map((company) => {
-    return <Tab>{company.name}</Tab>;
+  const listCompanies = experiences.map((company, index) => {
+    return <Tab key={index}>{company.name}</Tab>;
   });
 
   return (

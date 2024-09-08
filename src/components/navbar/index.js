@@ -32,6 +32,7 @@ const NavbarComponent = ({ english }) => {
             <Nav className="mr-auto w-100 justify-content-end">
               {topics.map((item) => (
                 <ScrollLink
+                  key={item.to}
                   className="fs-5 p-3 text-dark text-center font-weight-bold"
                   to={item.to}
                   offset={-120}

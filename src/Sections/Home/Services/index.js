@@ -15,8 +15,8 @@ const Services = ({ english }) => {
     });
   }, []);
 
-  const listServices = services.map((item) => (
-    <div className="d-flex justify-content-center">
+  const listServices = services.map((item, index) => (
+    <div className="d-flex justify-content-center" key={index}>
       <div className="d-flex flex-column">
         <CardServices
           text={english ? item.textEN : item.textPT}
@@ -36,7 +36,6 @@ const Services = ({ english }) => {
         {listServices}
       </div>
     </Container>
-    // <div></div>
   );
 };
 
