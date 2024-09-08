@@ -11,7 +11,7 @@ const Experencies = ({ english }) => {
   const [experiences, setExperiences] = useState([]);
 
   useEffect(() => {
-    fetchData("/experiences/companies.json").then((res) => {
+    fetchData("/experiences/companies/").then((res) => {
       setExperiences(res);
     });
   });

@@ -8,7 +8,7 @@ export default function HardSkills() {
   const [newSkill, setNewSkill] = useState("");
 
   useEffect(() => {
-    fetchData("/AboutSection/HardSkills.json").then((res) => {
+    fetchData("AboutSection/HardSkills/").then((res) => {
       if (res) setHardSkills(res);
     });
   }, []);
@@ -18,14 +18,14 @@ export default function HardSkills() {
       return;
     }
     const updatedSkills = [...hardSkills, newSkill];
-    updateData("/AboutSection.json", { HardSkills: updatedSkills });
+    updateData("/AboutSection/", { HardSkills: updatedSkills });
     setHardSkills(updatedSkills);
     setNewSkill("");
   };
 
   const deleteSkill = async (skillToDelete) => {
     const updatedSkills = hardSkills.filter((skill) => skill !== skillToDelete);
-    updateData("/AboutSection.json", { HardSkills: updatedSkills });
+    updateData("/AboutSection/", { HardSkills: updatedSkills });
     setHardSkills(updatedSkills);
   };
 

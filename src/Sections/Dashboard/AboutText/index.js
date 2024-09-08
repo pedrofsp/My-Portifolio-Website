@@ -8,7 +8,7 @@ export default function AboutText() {
   const [portugueseText, setPortugueseText] = useState("");
 
   useEffect(() => {
-    fetchData("/AboutSection/aboutText.json").then((res) => {
+    fetchData("AboutSection/aboutText/").then((res) => {
       setEnglishText(res.en);
       setPortugueseText(res.pt);
     });
@@ -21,7 +21,7 @@ export default function AboutText() {
   };
 
   const handleUpdateText = () => {
-    updateData("/AboutSection/aboutText.json", {
+    updateData("/AboutSection/aboutText/", {
       en: englishText,
       pt: portugueseText,
     });

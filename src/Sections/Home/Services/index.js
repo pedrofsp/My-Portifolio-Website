@@ -10,7 +10,7 @@ const Services = ({ english }) => {
   const [services, setServices] = useState([]);
 
   useEffect(() => {
-    fetchData("/servicesSection/services.json").then((res) => {
+    fetchData("/servicesSection/services/").then((res) => {
       if (res) setServices(res);
     });
   }, []);

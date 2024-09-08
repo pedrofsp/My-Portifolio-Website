@@ -13,15 +13,15 @@ export default function Dashboard() {
   const [user, setUser] = useState(false);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(getAuth(app), (user) => {
-      if (!user || user.email != "pedrohenriquefsp90@gmail.com")
+    const unsubscribe = onAuthStateChanged(getAuth(app), async (user) => {
+      if (!user || user.email !== "pedrohenriquefsp90@gmail.com")
         navigate("/login");
       else setUser(user);
       return () => {
         unsubscribe();
       };
     });
-  }, [user, setUser, navigate]);
+  }, [navigate]);
 
   return (
     <div>

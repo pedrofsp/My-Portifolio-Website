@@ -12,7 +12,7 @@ export default function Services() {
   });
 
   useEffect(() => {
-    fetchData("/servicesSection/services.json").then((res) => {
+    fetchData("servicesSection/services/").then((res) => {
       if (res) setServices(res);
     });
   }, []);

@@ -29,11 +29,11 @@ export default function Experiences() {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    fetchData("/AboutSection/HardSkills.json").then((res) => {
+    fetchData("/AboutSection/HardSkills/").then((res) => {
       if (res) setSelectedStack(res);
     });
 
-    fetchData("/experiences.json").then((res) => {
+    fetchData("/experiences/").then((res) => {
       if (res) setCompanies(res.companies);
     });
   }, []);

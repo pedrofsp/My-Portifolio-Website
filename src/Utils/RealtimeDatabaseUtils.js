@@ -1,12 +1,14 @@
-const baseUrl = "https://portifolio-website-b2b51-default-rtdb.firebaseio.com";
+import { child, get, getDatabase, set, ref } from "firebase/database";
 
 export const fetchData = async (endpoint) => {
   try {
-    const response = await fetch(`${baseUrl}${endpoint}`);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+    const dbRef = ref(getDatabase());
+    const snapshot = await get(child(dbRef, endpoint));
+    if (snapshot.exists()) return snapshot.val();
+    else {
+      console.log("No data available in the endpoint " + endpoint);
+      return null;
     }
-    return await response.json();
   } catch (error) {
     console.error("Error fetching data:", error);
     throw error;
@@ -15,33 +17,11 @@ export const fetchData = async (endpoint) => {
 
 export const updateData = async (endpoint, data) => {
   try {
-    const response = await fetch(`${baseUrl}${endpoint}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    return await response.json();
+    const db = getDatabase();
+    set(ref(db, endpoint), data);
+    console.log("Data updated successfully");
   } catch (error) {
     console.error("Error updating data:", error);
-    throw error;
-  }
-};
-
-export const deleteData = async (endpoint) => {
-  try {
-    const response = await fetch(`${baseUrl}${endpoint}`, {
-      method: "DELETE",
-    });
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-  } catch (error) {
-    console.error("Error deleting data:", error);
     throw error;
   }
 };

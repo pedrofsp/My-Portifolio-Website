@@ -11,10 +11,12 @@ const About = ({ english }) => {
   const [stackArray, setStackArray] = useState([]);
 
   useEffect(() => {
-    fetchData("/AboutSection/aboutText.json").then((res) => {
+    fetchData("/AboutSection/aboutText/").then((res) => {
+      console.log(res);
+
       if (res) setAboutText(res);
     });
-    fetchData("/AboutSection/HardSkills.json").then((res) => {
+    fetchData("/AboutSection/HardSkills/").then((res) => {
       if (res) setStackArray(res);
     });
   }, []);
