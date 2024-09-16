@@ -5,9 +5,28 @@ import { connect } from "react-redux";
 import { Container } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { fetchData } from "../../../Utils/RealtimeDatabaseUtils";
+import Backend from "../../../assets/Images/backend.png";
+import FrontEnd from "../../../assets/Images/frontend.png";
+import Mobile from "../../../assets/Images/mobile.png";
 
 const Services = ({ english }) => {
-  const [services, setServices] = useState([]);
+  const [services, setServices] = useState([
+    {
+      textEN: "Front-end Development",
+      textPT: "Desenvolvimento Front-end",
+      image: FrontEnd,
+    },
+    {
+      textEN: "Mobile Development",
+      textPT: "Desenvolvimento Mobile",
+      image: Mobile,
+    },
+    {
+      textEN: "Back-end Development",
+      textPT: "Desenvolvimento Back-end",
+      image: Backend,
+    },
+  ]);
 
   useEffect(() => {
     fetchData("/servicesSection/services/").then((res) => {
