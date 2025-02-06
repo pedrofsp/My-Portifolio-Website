@@ -139,7 +139,7 @@ const Experencies = ({ english }) => {
     return (
       <TabPanel key={index}>
         <ListGroup>
-          {company.experiences.map((project, index) => {
+          {company.experiences?.map((project, index) => {
             return (
               <div key={index}>
                 <br />

@@ -78,16 +78,17 @@ export default function Experiences() {
 
   const addCompany = async () => {
     const updatedCompanies = [...companies, newCompany];
-    await updateData("/experiences.json", { companies: updatedCompanies });
+    console.log("updated companies:", updatedCompanies);
+    await updateData("/experiences/", { companies: updatedCompanies });
     setCompanies(updatedCompanies);
-    setNewCompany({ name: "", experiences: [] });
+    setNewCompany({ experiences: [], name: "" });
   };
 
   const deleteCompany = async (companyToDelete) => {
     const updatedCompanies = companies.filter(
       (company) => company.name !== companyToDelete
     );
-    await updateData("/experiences.json", { companies: updatedCompanies });
+    await updateData("/experiences/", { companies: updatedCompanies });
     setCompanies(updatedCompanies);
   };
 
@@ -102,9 +103,8 @@ export default function Experiences() {
     const updatedCompanies = companies.map((company) =>
       company.name === selectedCompany ? updatedCompany : company
     );
-    console.log("aqui: ", updatedCompanies);
 
-    await updateData("/experiences.json", { companies: updatedCompanies });
+    await updateData("/experiences/", { companies: updatedCompanies });
     setCompanies(updatedCompanies);
     setNewExperience({
       title: { en: "", pt: "" },
@@ -129,7 +129,7 @@ export default function Experiences() {
       company.name === companyName ? updatedCompany : company
     );
 
-    await updateData("/experiences.json", { companies: updatedCompanies });
+    await updateData("/experiences/", { companies: updatedCompanies });
     setCompanies(updatedCompanies);
   };
 
