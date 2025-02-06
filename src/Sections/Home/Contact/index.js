@@ -1,9 +1,16 @@
+// Core
 import React, { useState } from "react";
+import { connect } from "react-redux";
+
+// Libraries
+import { Container } from "react-bootstrap";
+
+// Components
 import TitleComponent from "../../../components/Title";
+
+// Assets
 import Linkedin from "../../../assets/Images/linkedin.png";
 import Instagram from "../../../assets/Images/instagram.png";
-import { connect } from "react-redux";
-import { Container } from "react-bootstrap";
 
 const Contact = ({ english }) => {
   const [socialMedia] = useState([

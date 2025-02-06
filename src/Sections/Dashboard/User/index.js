@@ -1,6 +1,11 @@
-import { getAuth } from "firebase/auth";
+// Core
 import React from "react";
+
+// Libraries
 import { Container, Button, Image } from "react-bootstrap";
+
+// Services & Helpers
+import { getAuth } from "firebase/auth";
 import { app } from "../../../firebase";
 
 export default function User(props) {

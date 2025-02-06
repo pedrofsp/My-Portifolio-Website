@@ -1,7 +1,12 @@
+// Core
 import React, { useState, useEffect } from "react";
+
+// Libraries
 import { Container, Button, Form } from "react-bootstrap";
-import "../../../Utils/RealtimeDatabaseUtils";
-import { fetchData, updateData } from "../../../Utils/RealtimeDatabaseUtils";
+
+// Services & Helpers
+import "../../../utils/RealtimeDatabaseUtils";
+import { fetchData, updateData } from "../../../utils/RealtimeDatabaseUtils";
 
 export default function AboutText() {
   const [englishText, setEnglishText] = useState("");

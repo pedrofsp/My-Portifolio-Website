@@ -1,10 +1,17 @@
+// Core
 import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
+
+// Libraries
+import { Container } from "react-bootstrap";
+
+// Services & Helpers
+import { isMobile } from "../../../utils/functions";
+import { fetchData } from "../../../utils/RealtimeDatabaseUtils";
+
+// Components
 import StackComponent from "../../../components/Stack";
 import TitleComponent from "../../../components/Title";
-import { connect } from "react-redux";
-import { Container } from "react-bootstrap";
-import { isMobile } from "../../../functions/functions";
-import { fetchData } from "../../../Utils/RealtimeDatabaseUtils";
 
 const About = ({ english }) => {
   const [aboutText, setAboutText] = useState({

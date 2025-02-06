@@ -1,6 +1,11 @@
+// Core
 import React, { useState, useEffect } from "react";
+
+// Libraries
 import { Container, Button, Form, ListGroup, Image } from "react-bootstrap";
-import { fetchData, updateData } from "../../../Utils/RealtimeDatabaseUtils";
+
+// Services & Helpers
+import { fetchData, updateData } from "../../../utils/RealtimeDatabaseUtils";
 import FileBase64 from "react-file-base64";
 
 export default function Services() {

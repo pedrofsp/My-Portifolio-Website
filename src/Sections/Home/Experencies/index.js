@@ -1,11 +1,20 @@
+// Core
 import React, { useEffect, useState } from "react";
-import TitleComponent from "../../../components/Title";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import { connect } from "react-redux";
-import ExperiencesCard from "../../../components/ExperiencesCard";
+
+// Libraries
 import { Container, ListGroup } from "react-bootstrap";
-import { fetchData } from "../../../Utils/RealtimeDatabaseUtils";
+
+// Services & Helpers
+import { fetchData } from "../../../utils/RealtimeDatabaseUtils";
+
+// Components
+import TitleComponent from "../../../components/Title";
+import ExperiencesCard from "../../../components/ExperiencesCard";
+
+// Assets
 import CompJunior from "../../../assets/Images/compjunior.png";
 import Construpontes from "../../../assets/Images/construpontes.png";
 import HHS from "../../../assets/Images/hhs.png";

@@ -1,10 +1,21 @@
+// Core
 import React from "react";
-import "./style.scss";
-import Photo from "../../../assets/Images/foto_de_trage_sem_fundo_resolucao_original.png";
 import { connect } from "react-redux";
+
+// Libraries
 import { Container } from "react-bootstrap";
+
+// Service & Helpers
+import { isMobile } from "../../../utils/functions";
+
+// Components
 import SwitchLanguage from "../../../components/SwitchLanguage";
-import { isMobile } from "../../../functions/functions";
+
+// Assets
+import Photo from "../../../assets/Images/foto_de_trage_sem_fundo_resolucao_original.png";
+
+// Style
+import "./style.scss";
 
 const Introduction = ({ english, dispatch }) => {
   return (

@@ -1,4 +1,7 @@
+// Core
 import React, { useState, useEffect } from "react";
+
+// Libraries
 import {
   Container,
   Button,
@@ -7,8 +10,10 @@ import {
   Modal,
   Image,
 } from "react-bootstrap";
-import { fetchData, updateData } from "../../../Utils/RealtimeDatabaseUtils";
 import FileBase64 from "react-file-base64";
+
+// Services & Helpers
+import { fetchData, updateData } from "../../../utils/RealtimeDatabaseUtils";
 
 export default function Experiences() {
   const [companies, setCompanies] = useState([]);

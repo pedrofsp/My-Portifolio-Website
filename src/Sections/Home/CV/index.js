@@ -1,8 +1,13 @@
+// Core
 import React from "react";
+import { connect } from "react-redux";
+
+// Libraries
+import { Button } from "react-bootstrap";
+
+// Assets
 import cvEnglish from "../../../assets/CV/pedro_presotto_cv_english.pdf";
 import cvPortuguese from "../../../assets/CV/pedro_presotto_cv_portuguese.pdf";
-import { connect } from "react-redux";
-import { Button } from "react-bootstrap";
 
 const CV = ({ english }) => {
   return (
